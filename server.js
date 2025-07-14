@@ -8,20 +8,21 @@ const app = express();
 app.use(cors());
 const dbuser = encodeURIComponent(process.env.DBUSER)
 const dbpass = encodeURIComponent(process.env.DBPASS)
-// mongoose.connect(`mongodb://localhost:27017/merncafe`)
-// .then(() => {
-// app.listen(2080, () => {
-// console.log("Server started");
-// });
-// });
-app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://sampath:saisampath@cluster0.gjtu4i0.mongodb.net/merncafe?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect(`mongodb://localhost:27017/merncafe`)
 .then(() => {
 app.listen(2080, () => {
 console.log("Server started");
 });
-})
+});
+app.use(express.static("public"));
+
+// mongoose.connect("mongodb+srv://sampath:saisampath@cluster0.gjtu4i0.mongodb.net/merncafe?retryWrites=true&w=majority&appName=Cluster0")
+// .then(() => {
+// app.listen(2080, () => {
+// console.log("Server started");
+// });
+// })
 
 app.use(express.json());
 
